@@ -1,55 +1,77 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-import { FaGithub } from 'react-icons/fa';
-import { Container, Footer } from './styles';
+import {
+  Hero,
+  Grid,
+  TravelItinerary,
+  Button,
+  Banner,
+  Video,
+  ContactForm,
+} from '~/components';
 
-export default function App() {
-  const dispatch = useDispatch();
+import { Container, Card, Gradient } from './styles';
 
-  function showNotification() {
-    dispatch({
-      type: 'ADD_NOTIFICATION',
-      data: {
-        type: 'success',
-        content: 'Hello World!',
-      },
-    });
-  }
+export default function Home({ history }) {
+  const { nextTrips } = useSelector(state => state.nextTrips);
+  const { heroes } = useSelector(state => state.heroes);
+  const { whyUs } = useSelector(state => state.whyUs);
+  const { videos } = useSelector(state => state.videos);
 
   return (
     <Container>
-      <div>
-        <h1>
-          {'<'} Coding Labs {'/>'}
-        </h1>
-        <h2>Create-React-App Template</h2>
-        <p>
-          This template comes with a bunch of features to help you get started.
-        </p>
-        <p>
-          Redux-Saga is already implemented with Reactotron for debugging and
-          reduxsauce to reduce cluttering.
-        </p>
-        <p>
-          There is a sample action to produce a notification with
-          react-toastify.
-        </p>
-        <button type="button" onClick={showNotification}>
-          Show me!
-        </button>
-        <p>For templating and styling, styled-components is used.</p>
-        <p>
-          Some other functions include: Prettier/ESLint with Airbnb guide,
-          pre-commit hooks, extended support for Jest tests, among others .
-        </p>
-        <h2>Happy Coding!</h2>
+      <Hero heroes={heroes} />
+      <Grid>
+        {nextTrips.map(({ slug, name, date, background }) => (
+          <TravelItinerary
+            key={slug}
+            slug={slug}
+            name={name}
+            date={date}
+            background={background}
+            history={history}
+          />
+        ))}
+      </Grid>
+      <div style={{ paddingBottom: 64 }}>
+        <Button>Ver Mais Roteiros</Button>
       </div>
-      <Footer>
-        <a href="https://github.com/codinglabsdev">
-          <FaGithub size={32} />
-        </a>
-      </Footer>
+      <Banner background="images/why-us.jpg">
+        <Grid>
+          <h5>Porque Viajar Conosco?</h5>
+        </Grid>
+        <Grid>
+          {whyUs.map(({ title, text }, index) => (
+            <Card key={title}>
+              <h6>
+                {String(index + 1).padStart(2, '0')} {title}
+              </h6>
+              <p>{text}</p>
+            </Card>
+          ))}
+        </Grid>
+      </Banner>
+      <Gradient>
+        <div className="background">
+          <div className="gradient" />
+          <img src="images/background-sand.jpg" alt="" />
+        </div>
+        <Grid>
+          <h5>O que dizem sobre nós?</h5>
+        </Grid>
+        <Grid alignItems="flex-end">
+          {videos.map((value, index) => (
+            <Video key={value} src={value} margin={index * 64} />
+          ))}
+        </Grid>
+        <ContactForm />
+      </Gradient>
     </Container>
   );
 }
+
+Home.propTypes = {
+  history: PropTypes.shape().isRequired,
+};

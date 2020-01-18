@@ -1,72 +1,64 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
 
 export const Container = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #fff;
-
-  div {
-    max-width: 800px;
-    width: 100%;
-    flex: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-      color: #ff79c6;
-      padding: 10px 0;
-    }
-
-    h2 {
-      padding: 10px 0;
-    }
-
-    p {
-      line-height: 1.5rem;
-      padding: 5px 0;
-      text-align: center;
-    }
-
-    button {
-      margin: 20px 0;
-      height: 44px;
-      padding: 0 25px;
-      color: #fff;
-      background: #3b9eff;
-      font-weight: bold;
-      border: 0;
-      border-radius: 4px;
-      transition: background 0.2s;
-
-      &:hover {
-        background: ${darken(0.03, '#3b9eff')};
-      }
-    }
-  }
 `;
 
-export const Footer = styled.footer`
-  width: 100%;
+export const Card = styled.div`
+  width: 270px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-bottom: 32px;
+`;
+
+export const Gradient = styled.div`
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 0;
-  justify-self: flex-end;
+  padding: 64px 0;
 
-  a {
-    color: #fff;
-    transition: opacity 0.2s;
-    opacity: 0.8;
+  h5 {
+    color: #2f3640;
+  }
 
-    &:hover {
-      opacity: 1;
+  .background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: -2;
+
+    .gradient {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(52, 113, 167, 0) 0%,
+        #c4a7a0 100%
+      );
+    }
+
+    img {
+      width: 100%;
     }
   }
 `;
