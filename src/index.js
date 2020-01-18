@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/scss/main.scss';
+import 'typeface-montserrat';
+import 'typeface-fjalla-one';
 
 import '~/config/ReactotronConfig';
 import store from './store';

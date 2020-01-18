@@ -2,9 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Montserrat:400,500&display=swap');
-
 * {
+
   margin: 0;
   padding: 0;
   outline: 0;
@@ -80,7 +79,7 @@ h4 {
 }
 
 h5 {
-  font-family: 'Fjalla One';
+  font-family: 'Fjalla One', sans-serif;
   font-size: 2.5rem;
   color: #FFFFFF;
   letter-spacing: 0.07rem;
@@ -89,10 +88,10 @@ h5 {
 }
 
 h6 {
-  font-family: 'Fjalla One';
+  font-family: 'Fjalla One', sans-serif;
   font-size: 1.5rem;
-color: #FFFFFF;
-letter-spacing: 0.04rem;
+  color: #FFFFFF;
+  letter-spacing: 0.04rem;
 }
 
 p {
